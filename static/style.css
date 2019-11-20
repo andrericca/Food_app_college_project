@@ -1,0 +1,23 @@
+.teste {
+    position: relative;
+    transition: all .2s ease-in;
+
+}
+.teste:hover {
+    z-index: 2;
+    transition: all 200ms ease-in;
+    transform: scale(2.1);
+}
+
+h5 {
+    text-decoration: underline;
+  }
+
+.button {
+    font-size: 32px;
+    text-align: center;
+    color: black;
+    padding: 30px 64px;
+    cursor: pointer;
+    display: inline-block;
+}

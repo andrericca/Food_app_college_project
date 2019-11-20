@@ -1,0 +1,50 @@
+main {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+body {
+  padding-top: 5rem;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.manoel {
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+
+.metadata {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* same background-color as bg-light */
+  background-color: #f8f9fa;
+  border: 1px solid rgba(58, 16, 121, 0.2);
+  color: #000000;
+}
+
+.fixedheight {
+  margin-top: 384px;
+}
+
+.card {
+  border-radius: 0.1rem;
+}
+
+.card-header {
+  padding: 0.75rem;
+  background-color: #000000;
+}
+
+.card-body {
+  padding: 0.75rem;
+  background-color: #000000;
+}
+
+.tooltip-inner {
+  color: rgb(210, 210, 210);
+  background-color: #050f1c;
+}
