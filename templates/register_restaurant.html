@@ -29,9 +29,8 @@
       </ul>
           &nbsp;&nbsp;<a style="color:black;" href="/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </nav>
-    
     <main role="main">
-    <form autocomplete="off" action = "/access" method = "POST">
+    <form autocomplete="off" action = "/register_restaurant" method = "POST">
     <div class="container">
       <div class="row"  align = "left">
         <div class="col">
@@ -43,31 +42,59 @@
           <img border="0" src="/static/logo.png" width="300" height="300">
         </div>
         <div class="col">
+    <div class="row"  align = "left">
+<p><h3>Bem vindo ao SBC Food, faça seu cadastro:</h3></p>
+</div>
+<div class="row"  align = "left">
+<div class="col">
+    <br/>
+    <br/>
+    <br/>
+          <h5 style="color: black">Nome no registro:</h5>
+          <p><input type = "text" name = "user" placeholder = "Nome no registro"/></p>
+          <h5 style="color: black">Nome fantasia:</h5>
+          <p><input type = "text" name = "nome" placeholder = "Nome fantasia"/></p>
+          <h5 style="color: black">Senha:</h5>
+          <p><input type = "password" id= "pass" name = "password" /></p>
+          <h5 style="color: black">Telefone:</h5>
+          <p><input type = "text" name = "telefone" placeholder = "Telefone"/></p>
+          <h5 style="color: black">CNPJ (somente numeros):</h5>
+          <p><input type = "text" name = "CNPJ" placeholder = "CNPJ"/></p>
+          <h5 style="color: black">E-mail:</h5>
+          <p><input type = "text" name = "email" placeholder = "E-mail"/></p>
+          <h5 style="color: black">Categoria do restaurante:</h5>
+          <p><input type = "text" name = "categoria" placeholder = "Categoria"/></p>
+          <h5 style="color: black">Horário de funcionamento</h5>
+          <p><input type = "text" name = "funcionamento" placeholder = "00:00 - 00:00"/></p>
+        </div>
+        <div class="col">
             <br/>
             <br/>
             <br/>
-            <h4 style="color:red">Houve um problema com seu login, tente novamente.</h4>
+            <h4  style="color: black">Endereço:</h4>
+            <p><input type = "text" name = "rua" placeholder = "Rua"/></p>
             <br/>
-          <h5 style="color:black">CPF (somente números):</h5>
-          <p><input autocomplete="false" type = "text" name = "CPF" /></p>
-          <h5 style="color:black">Senha:</h5>
-          <p><input autocomplete="false" type = "password" id= "pass" name = "password" /></p>
-          <br/>
-          <p><input type = "submit" value = "Login" name="index"/></p> 
-          <br/>
-          <br/>
-          <p><input type = "submit" value = "Registrar" name="index"/></p>
+            <p><input type = "text" name = "numero" placeholder="Número" /></p>
+            <br/>
+            <p><input type = "text" name = "bairro" placeholder = "Bairro"/></p>
+            <br/>
+            <p><input type = "text" name = "cidade" placeholder = "Cidade"/></p>
+            <br/>
+            <p><input type = "text" name = "estado" placeholder = "Estado"/></p>
+            <br/>
+            <p><input type = "text" name = "CEP" placeholder = "CEP"/></p>
+        </div>
+    </div>
+    <p><input type = "submit" value = "Cadastrar" /></p> 
         </div>
       </div>
-      <p><input type = "submit" value = "Restaurante" name="index"/></p>
     </div> 
-  </form>
+    </form>
     </main>
-
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-     <script src="/static/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
+    <script src="/static/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="/static/popper-1.12.9.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
     <script src="/static/bootstrap-4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"></script>

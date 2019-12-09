@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <main role="main">
+    <script>            
+        function alert_feedback() {
+            alert("Produto cadastrado com sucesso.");
+        }
+    </script>
+
+    <div class="container">
+            <form autocomplete="off" action = "/products" method = "POST">
+        <div class="row">
+            <div class="col"></div>
+                <div class="col">
+                        <h5 style="color: black">Nome do prato:</h5>
+                        <p><input type = "text" name = "name" placeholder = "Nome do prato"/></p>
+                        <h5 style="color: black">Descrição</h5>
+                        <p><textarea type = "text" style="width:480px; height:200px; padding: 1px" id= "description" name = "description" placeholder = "Digite as descrições" ></textarea></p>
+                        <h5 style="color: black">Valor:</h5>
+                        <p><input type = "text" name = "valor" placeholder = "00,00"/></p>
+                        <p><input type = "submit" value = "Cadastrar" onclick="alert_feedback();"/></p> 
+                      </div>
+                <div class="col"></div>
+        </div>  
+    </form>
+    </div> 
+    </main>
+    {% endblock %}

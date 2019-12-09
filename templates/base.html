@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="/static/favicon.png">
+        <link rel="icon" href="/static/logo.png">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Comida</title>
+        <title>SBC Food</title>
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,25 +22,23 @@
         <link href="static/manoel.css" rel="stylesheet">
         <link href="/static/emma.css" rel="stylesheet">
       {% if title %}
-      <title>{{ title }} - Comida</title>
+      <title>{{ title }} - SBC Food</title>
       {% else %}
-      <title>Welcome to Comida</title>
+      <title>Welcome to SBC Food</title>
       {% endif %}
     </head>
     <body style="background-color:#ccc">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top justify-content-between" style="background-color:#358525">
         <a class="navbar-brand" href="/">
-                <img src="/static/logo2.png" alt="Comida" height="40px" />
+                <img src="/static/logo.png" alt="SBC Food" height="40px" />
             </a>
             <ul class="navbar-nav mr-auto">
                 <li>
-        <a class="navbar-brand" href="/">Comida</a>
+        <a class="navbar-brand" href="/">SBC Food</a>
             </ul>
-                &nbsp;&nbsp;<a href="/dashboard">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;<a href="/index">Exames sem feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;<a href="/index_validated">Exames com feedback</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;<a href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;<a href="/sobre">Sobre</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;<a style ="color:black; "href="/">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;<a style ="color:black; "href="/shop_car">Carrinho</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;<a style = "color:black;" href="/logout">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
     </nav>
         <hr>{% block content %}{% endblock %}</hr>
     </body>

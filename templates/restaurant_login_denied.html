@@ -31,7 +31,7 @@
     </nav>
     
     <main role="main">
-    <form autocomplete="off" action = "/access" method = "POST">
+    <form autocomplete="off" action = "/access_restaurant" method = "POST">
     <div class="container">
       <div class="row"  align = "left">
         <div class="col">
@@ -40,18 +40,23 @@
             <br/>
             <br/>
             <br/>
+            <br/>
           <img border="0" src="/static/logo.png" width="300" height="300">
+        </br>
+          <h4 style="color:red">Houve um problema com seu login, tente novamente.</h4>
+        </br>
         </div>
         <div class="col">
             <br/>
             <br/>
             <br/>
-            <h4 style="color:red">Houve um problema com seu login, tente novamente.</h4>
+            <h2>Olá proprietário de restaurante,</h2>
+            <h3>Faça seu login:</h3>
             <br/>
-          <h5 style="color:black">CPF (somente números):</h5>
-          <p><input autocomplete="false" type = "text" name = "CPF" /></p>
+          <h5 style="color:black">CNPJ (somente números):</h5>
+          <p><input autocomplete="false" type = "text" name = "CNPJ" placeholder="CNPJ" /></p>
           <h5 style="color:black">Senha:</h5>
-          <p><input autocomplete="false" type = "password" id= "pass" name = "password" /></p>
+          <p><input autocomplete="false" type = "password" id= "pass" name = "password" placeholder="Senha"/></p>
           <br/>
           <p><input type = "submit" value = "Login" name="index"/></p> 
           <br/>
@@ -59,7 +64,6 @@
           <p><input type = "submit" value = "Registrar" name="index"/></p>
         </div>
       </div>
-      <p><input type = "submit" value = "Restaurante" name="index"/></p>
     </div> 
   </form>
     </main>

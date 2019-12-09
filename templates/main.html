@@ -1,57 +1,45 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/static/logo.png">
-
-    <title>secret</title>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/static/bootstrap-4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4">
-
-    <!-- Custom styles for this template -->
-    <!-- <link href="/static/manoel.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="/static/style.css">
-    <link href="/static/toastr-2.1.4.min.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top justify-content-between" style="background-color:#490101">
-      <a class="navbar-brand" href="/">
-        <img src="/static/logo2.png" alt="NeuralMed" height="40px" />
-      </a>
-    </nav>
-    <br/>
+{% extends "base.html" %}
+{% block content %}
     <main role="main">
     <div class="container" align="center">
         <div class="row" >
-            <div class="col"> 
-                <br/> 
-                <br/>             
-                <br/> 
-              <object data="{{ user_image }}"></object>
-            </div> 
             <div class="col">
-                <br/> 
-                <br/> 
-              <a href="/logout">
-                  <img class="img-fluid" border="0" src="/static/lion.png" width="150" height="150">
-              </a>
+                <h4 style="color:black">O que sua fome pede?</h4>
             </div>
+            <div class="col"></div>
+            <br/>
+           <br/>
+              </div>
+            </div> 
+                <table class="table table-hover">
+                <tr>
+                  <h6><td width="20%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">Nome do Restaurante:</h6><input id="inputtype" type = "text" name = "nome" placeholder="Nome do Restaurante" /></div></td>
+                  <td width="20%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">Categoria:</h6><input id="inputtype" type = "text" name = "categoria" placeholder="Categoria" /></div></td>
+                  <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">Horário de funcionamento:</h6></div></td>
+                  <td width="10%" style="vertical-align:middle;" ><div align="center"><button type = "submit" class= "searchbutton"><a href="#">
+                      <img src="static/icon.png" 
+                      onmouseover="this.src='static/icon2.png'"
+                      onmouseout="this.src='static/icon.png'"
+                      border="0" alt="" width="50px" height="50px"/></a></button></div>
+                  </td>
+                </tr>
+              </form>
+                {% for result in info %}
+                <tr class="item">
+                    <td width="20%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{result[1]}}</h6></div></td>  
+                    <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{result[2]}}</h6></div></td>  
+                    <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{result[3]}}</h6></div></td>
+                    <form method="post" action="/restaurant/{{ result[0] }}">
+                    <td width="5%" style="vertical-align:middle;"><div align="center"><button type = "submit" class= "searchbutton"><a href="#">
+                        <img src="static/fork.png" 
+                        onmouseover="this.src='static/fork2.png'"
+                        onmouseout="this.src='static/fork.png'"
+                        border="0" alt="" width="50px" height="50px"/></a></button></div></div></td>
+                    </form>
+                    </tr>
+            {% endfor %}
+                </table>
       </div>
     </div>  
     </main>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-     <script src="/static/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/static/popper-1.12.9.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
-    <script src="/static/bootstrap-4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"></script>
-    <script src="/static/js/manoel.js"></script>
-    <script src="/static/toastr-2.1.4.min.js"></script> 
-  </body>
-</html>
+  {% endblock %}
