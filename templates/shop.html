@@ -3,7 +3,7 @@
 <main role="main">
 <script>            
     function alert_feedback() {
-        alert("Pedido confirmado.");
+        alert("Pedido confirmado, o status foi alterado para aprovado.");
     }
 </script>
     <div class="container" align="center">
@@ -31,18 +31,22 @@
             <td></td>
             <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{result[2]}}</h6></div></td>
             <td></td>
-            <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{result[2]*result[3]}}</h6></div></td>        </tr>
+            <td width="10%" style="vertical-align:middle;"><div align="center"><h6 style="color:black">{{(result[2]*result[3])|round(2)}}</h6></div></td>        </tr>
     {% endfor %}
     </table>
+    <br/>
+    <form action = "/order" method = "POST">
+    <h2 style="color:black">O valor total do seu pedido é R$ {{total}}</h2>
         </div>
         <div class="row" style="justify-content: space-between">
         <input type="button" class ="btn btn-primary border teste2" border="2" style= "background-color: #001637;font-size: 15px;" value="Pagina Anterior" onclick="history.back(-1)" />
-        <div align="center" ><button type = "submit" class= "searchbutton" onclick="alert_feedback();"><a href="#">  
+        <div align="center" ><button type = "submit" class= "searchbutton" onclick="alert_feedback();"><a href="#">
         <img src="/static/car.png" 
         onmouseover="this.src='/static/car2.png'"
         onmouseout="this.src='/static/car.png'"
-        border="0" alt="" width="50px" height="50px"/></a></button></div>
+        border="0" alt="" width="50px" height="50px"/></a></button><h6 style="color:black">Confirmar</h6></div>
     </div>
+</form>
     </div>  
 </main>
   {% endblock %}

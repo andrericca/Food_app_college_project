@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, url_for, redirect, session
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 import uuid
+import datetime
 
 PEOPLE_FOLDER = os.path.join('static', 'img')
 
@@ -17,7 +18,7 @@ def index():
     if "cnpj" in session:
         return render_template("main_restaurant.html")
     elif "cpf" in session:
-        return render_template("/main.html")
+        return redirect("/main")
     else:
         return render_template("index.html")
 
@@ -60,7 +61,6 @@ def access_restaurant():
                     session_cnpj = rows[0]
                 if session_cnpj != None:
                     session['cnpj'] = session_cnpj
-                    print(session_cnpj)
                 else:
                     print("bad")
                 return render_template("main_restaurant.html")
@@ -74,11 +74,8 @@ def products():
     if request.method == 'POST':
         try:
             name = request.form['name']
-            print(name)
             description = request.form['description']
-            print(description)
             value = request.form['valor']
-            print(value)
             with sql.connect("food.db") as con:
                 cur = con.cursor()
                 cur.execute("INSERT into cardapio (produto,descricao,valor,CNPJ) VALUES (?,?,?,?)",(name,description,value,session["cnpj"]))
@@ -169,14 +166,11 @@ def shop(cnpj):
     if request.method == 'POST':    
         try:
             order_number = session['uuid']
-            print(order_number)
             for requests in request.form:
                 if request.form[requests] != "":
-                    print(requests)
-                    print(request.form[requests])
                     with sql.connect("food.db") as con:
                         cur = con.cursor()
-                        cur.execute("INSERT into pedido (CNPJ,produto_id,quantidade,CPF, uuio) VALUES (?,?,?,?,?)",(cnpj, requests, request.form[requests], session['cpf'], order_number))
+                        cur.execute("INSERT into pedido (CNPJ,produto_id,quantidade,CPF, uuid, status_pedido) VALUES (?,?,?,?,?,?)",(cnpj, requests, request.form[requests], session['cpf'], order_number,"pendente"))
                         con.commit()
                         print("Record successfully added")                    
         except Exception as e:
@@ -189,15 +183,48 @@ def shop_car():
     try:
         with sql.connect("food.db") as con:
             cur = con.cursor()
-            cur.execute("SELECT r.nome_fantasia,c.produto, p.quantidade, c.valor from pedido p join restaurante r on (p.CNPJ=r.CNPJ) join cardapio c on (p.produto_id=c.ID) where uuio=(?)",(order_number,))
+            cur.execute("SELECT r.nome_fantasia,c.produto, p.quantidade, c.valor from pedido p join restaurante r on (p.CNPJ=r.CNPJ) join cardapio c on (p.produto_id=c.ID) where uuid=(?) and status_pedido='pendente'",(order_number,))
             shop_info = cur.fetchall() 
-            print(shop_info)
-            numero = float(shop_info[0][3])
-            print(numero)
+            total=0
+            for product in shop_info:
+                total = total + (product[2]*product[3])
+            print(total)
 
-        return render_template("shop.html", shop_info=shop_info) 
+        return render_template("shop.html", shop_info=shop_info, total=round(total,2)) 
     except Exception as e:
         return render_template("empty_shop.html")
+
+@app.route('/order', methods=['GET', 'POST'])
+def order():
+    order_number = session['uuid']
+    today = datetime.datetime.today().replace(second=0, microsecond=0)
+    try:
+        with sql.connect("food.db") as con:
+            cur = con.cursor()
+            cur.execute("SELECT ID from entregador order by random() LIMIT 1")
+            entregador_id = cur.fetchone()[0]
+            print(entregador_id)
+            cur.execute("UPDATE pedido set status_pedido='aprovado', horario = (?), entregador_id = (?) where uuid=(?)",(today, entregador_id, order_number))
+            con.commit()
+            print("Record successfully added") 
+    except Exception as e:
+        print(e)
+    return ('', 204) 
+
+@app.route('/order_status', methods=['GET', 'POST'])
+def order_status():
+    try:
+        with sql.connect("food.db") as con:
+            order_number = session['uuid']
+            cur = con.cursor()
+            cur.execute("SELECT r.nome_fantasia, p.horario, c.valor, p.quantidade, p.status_pedido from pedido p join restaurante r on (p.CNPJ=r.CNPJ) join cardapio c on (p.produto_id=c.ID) where uuid=(?) and status_pedido='aprovado'",(order_number,))
+            order_info = cur.fetchall()
+            total=0
+            for product in order_info:
+                total = total + (product[2]*product[3])
+    except Exception as e:
+        print(e)
+    return render_template("order.html",  order=order_info, order_number=order_number, total=total)
 
 @app.route('/restaurant/<cnpj>', methods=['GET', 'POST'])
 def restaurant(cnpj):
