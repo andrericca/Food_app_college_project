@@ -1,2 +1,2 @@
-# gameradiology
-Quick radiology game to test real/artificial images.
+# Food app
+Project for database classes.
