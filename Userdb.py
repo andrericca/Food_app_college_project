@@ -14,7 +14,7 @@ print ("Table created successfully")
 conn.close()
 
 class User(db.Model):
-    CPF= db.Column ('CPF', db.Integer,primary_key=True, unique=True)
+    CPF= db.Column ('CPF', db.Integer, primary_key=True, unique=True)
     nome = db.Column('nome', db.String(80), unique=False, nullable=False)
     password = db.Column('password', db.String(80), unique=False, nullable=False)
     email = db.Column('email', db.String(80), unique=True, nullable=False)
